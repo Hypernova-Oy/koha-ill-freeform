@@ -14,60 +14,44 @@
 [% END %]
 
 [% IF whole.stage == "form" %]
-<h2>Create a manual ILL request</h2>
 <form id="create_form" method="POST" action=[% here %]>
   [% INCLUDE 'csrf-token.inc' %]
   <fieldset class="rows">
-    <legend>General details</legend>
+    <legend>Tiedot</legend>
     <ol id="general-freeform-fields">
       <li>
         <label class="required" for="type">Type:</label>
         <select name="type" id="type">
           <option value=""/>
-          [% IF whole.value.other.type.lower == "book" %]
-          <option value="book" selected="selected">Book</option>
-          [% ELSE %]
-          <option value="book">Book</option>
-          [% END %]
-          [% IF whole.value.other.type.lower == "chapter" %]
-          <option value="chapter" selected="selected">Chapter</option>
-          [% ELSE %]
-          <option value="chapter">Chapter</option>
-          [% END %]
-          [% IF whole.value.other.type.lower == "journal" %]
-          <option value="journal" selected="selected">Journal</option>
-          [% ELSE %]
-          <option value="journal">Journal</option>
-          [% END %]
           [% IF whole.value.other.type.lower == "article" %]
-          <option value="article" selected="selected">Journal article</option>
+          <option value="article" selected="selected">Artikkeli</option>
           [% ELSE %]
-          <option value="article">Journal article</option>
-          [% END %]
-          [% IF whole.value.other.type.lower == "thesis" %]
-          <option value="thesis" selected="selected">Thesis</option>
-          [% ELSE %]
-          <option value="thesis">Thesis</option>
-          [% END %]
-          [% IF whole.value.other.type.lower == "conference" %]
-          <option value="conference" selected="selected">Conference</option>
-          [% ELSE %]
-          <option value="conference">Conference</option>
-          [% END %]
-          [% IF whole.value.other.type.lower == "dvd" %]
-          <option value="dvd" selected="selected">DVD</option>
-          [% ELSE %]
-          <option value="dvd">DVD</option>
-          [% END %]
-          [% IF whole.value.other.type.lower == "other" %]
-          <option value="other" selected="selected">Other</option>
-          [% ELSE %]
-          <option value="other">Other</option>
+          <option value="article">Artikkeli</option>
           [% END %]
           [% IF whole.value.other.type.lower == "resource" %]
-          <option value="resource" selected="selected">Generic resource</option>
+          <option value="resource" selected="selected">CD</option>
           [% ELSE %]
-          <option value="resource">Generic resource</option>
+          <option value="resource">CD</option>
+          [% END %]
+          [% IF whole.value.other.type.lower == "journal" %]
+          <option value="journal" selected="selected">Kausijulkaisu</option>
+          [% ELSE %]
+          <option value="journal">Kausijulkaisu</option>
+          [% END %]
+          [% IF whole.value.other.type.lower == "book" %]
+          <option value="book" selected="selected">Kirja</option>
+          [% ELSE %]
+          <option value="book">Kirja</option>
+          [% END %]
+          [% IF whole.value.other.type.lower == "dvd" %]
+          <option value="dvd" selected="selected">Videotallenne</option>
+          [% ELSE %]
+          <option value="dvd">Videotallenne</option>
+          [% END %]
+          [% IF whole.value.other.type.lower == "other" %]
+          <option value="other" selected="selected">Muu</option>
+          [% ELSE %]
+          <option value="other">Muu</option>
           [% END %]
         </select>
       </li>
@@ -80,17 +64,17 @@
   [% END %]
   [% INCLUDE "${cwd}/shared-includes/custom_fields.inc" %]
   <fieldset class="rows">
-    <legend>Patron options</legend>
+    <legend>Asiakkaan valinnat</legend>
     <ol>
       <li>
         <label class="required" for="cardnumber">
-          Card number, username or surname:
+          Kortinnumero, käyttäjätunnus tai sukunimi
         </label>
         <input type="text" name="cardnumber" id="cardnumber" autocomplete="off"
                type="text" value="" />
       </li>
       <li>
-        <label class="required" for="branchcode">Destination library:</label>
+        <label class="required" for="branchcode">Kohdekirjasto:</label>
         <select id="branchcode" name="branchcode">
           <option value="" />
           [% FOREACH branch IN branches %]
@@ -103,8 +87,8 @@
     </ol>
   </fieldset>
   <fieldset class="action">
-    <input id="ill-submit" type="submit" value="Create" disabled />
-    <a class="cancel" href="/cgi-bin/koha/ill/ill-requests.pl">Cancel</a>
+    <input id="ill-submit" type="submit" value="Luo kaukolainapyyntö" disabled />
+    <a class="cancel" href="/cgi-bin/koha/ill/ill-requests.pl">Peruuta</a>
   </fieldset>
   <input type="hidden" name="method" value="create" />
   <input type="hidden" name="stage" value="form" />

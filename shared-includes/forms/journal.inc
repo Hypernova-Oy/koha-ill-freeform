@@ -1,20 +1,20 @@
 <fieldset id="journal-freeform-fieldset" class="rows">
-    <legend>Journal details</legend>
+    <legend>Kausijulkaisun tiedot</legend>
     <ol id="journal-freeform-fields">
         <li>
-            <label for="title">Title:</label>
+            <label for="title">Nimeke:</label>
             <input type="text" name="title" id="title" value="[% whole.value.other.title %]" />
         </li>
         <li>
-            <label for="volume">Volume:</label>
+            <label for="volume">Volyymi:</label>
             <input type="text" name="volume" id="volume" value="[% whole.value.other.volume %]" />
         </li>
         <li>
-            <label for="issue">Issue number:</label>
+            <label for="issue">Numero:</label>
             <input type="text" name="issue" id="issue" value="[% whole.value.other.issue %]" />
         </li>
         <li>
-            <label for="year">Year:</label>
+            <label for="year">Vuosi:</label>
             <input type="text" name="year" id="year" value="[% whole.value.other.year %]" />
         </li>
         <li>
